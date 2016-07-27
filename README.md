@@ -11,6 +11,7 @@ Technologies used
 Online Demo
 -
 You can access online this apps on openshift with url http://petclinicmvc-sh2210.rhcloud.com/petclinic/login
+user pass ( sofyan, qwerty )
 
 How to Run on Your Local
 ---
