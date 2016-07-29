@@ -1,6 +1,7 @@
 package org.sofyan.latihan.app.ctrl;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.sofyan.latihan.app.bean.DataTableReturnBean;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.collect.Lists;
+
 @Controller
 public class OwnerCtrl {
 	
@@ -37,8 +40,8 @@ public class OwnerCtrl {
 	@ResponseBody
 	public Owner getOwner(@PathVariable("id") Long ownerId) {
 	
-	if( ownerId == null )
-		return null;
+		if( ownerId == null )
+			return null;
 	
 		return this.ownerServiceImpl.findOne(ownerId);
 	
@@ -99,8 +102,7 @@ public class OwnerCtrl {
 			return null;
 		}
 		
-		Order[] order = new Order[ osb.getOrder().size() ];
-		int index = 0;
+		List<Order> listOrder = Lists.newArrayList();
 		
 		for(HashMap<String, String> map : osb.getOrder()) {
 			
@@ -114,10 +116,12 @@ public class OwnerCtrl {
 				default : prop = "createdDate";
 			}
 			
-			order[index++] = new Order(dir, prop);
+			listOrder.add( new Order(dir, prop) );
+			
 		}
 		
-		return order;
+		return listOrder.toArray(new Order[]{});
+		
 		
 	}
 	
