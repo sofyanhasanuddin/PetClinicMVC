@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sofyan.latihan.app.bean.DataTableReturnBean;
 import org.sofyan.latihan.app.bean.VisitSearchBean;
 import org.sofyan.latihan.app.ctrl.message.Message;
@@ -40,6 +42,8 @@ import com.google.common.collect.Lists;
 
 @Controller
 public class VisitCtrl {
+	
+	public static Logger log = LoggerFactory.getLogger( VisitCtrl.class );
 	
 	@Autowired
 	private VisitService visitServiceImpl;
@@ -168,7 +172,7 @@ public class VisitCtrl {
 			String prop = map.get("column");
 			
 			switch( prop ) {
-				case "1" : prop = "name"; break;
+				case "1" : prop = "owner.name"; break;
 				case "2" : prop = "entryDate"; break;
 				case "3" : prop = "leaveDate"; break;
 				default : prop = "createdDate";

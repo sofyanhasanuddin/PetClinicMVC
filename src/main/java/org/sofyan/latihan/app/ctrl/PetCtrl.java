@@ -2,6 +2,8 @@ package org.sofyan.latihan.app.ctrl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sofyan.latihan.app.model.Pet;
 import org.sofyan.latihan.app.model.PetType;
 import org.sofyan.latihan.app.model.TreatmentType;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PetCtrl {
+	
+	public static Logger log = LoggerFactory.getLogger( PetCtrl.class );
 	
 	@Autowired
 	private PetService petServiceImpl;

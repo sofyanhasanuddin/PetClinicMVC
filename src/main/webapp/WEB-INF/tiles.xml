@@ -3,16 +3,16 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	
-	<definition name="loginLayout" template="/page/common/loginlayout.jsp">
-		<put-attribute name="head" value="/page/common/header.jsp" />
-		<put-attribute name="css" value="/page/common/css.jsp" />
+	<definition name="loginLayout" template="/WEB-INF/page/common/loginlayout.jsp">
+		<put-attribute name="head" value="/WEB-INF/page/common/header.jsp" />
+		<put-attribute name="css" value="/WEB-INF/page/common/css.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="javascript" value="/page/common/javascript.jsp" />
-		<put-attribute name="footer" value="/page/common/footer.jsp" />
+		<put-attribute name="javascript" value="/WEB-INF/page/common/javascript.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/page/common/footer.jsp" />
 	</definition>
 	
-	<definition name="baselayout" extends="loginLayout" template="/page/common/baselayout.jsp">
-		<put-attribute name="nav" value="/page/common/nav.jsp" />
+	<definition name="baselayout" extends="loginLayout" template="/WEB-INF/page/common/baselayout.jsp">
+		<put-attribute name="nav" value="/WEB-INF/page/common/nav.jsp" />
 	</definition>
 	
 	<definition name="login" extends="loginLayout">
@@ -20,11 +20,11 @@
 	</definition>
 	
 	<definition name="index" extends="baselayout">
-		<put-attribute name="body" value="/page/index.jsp" />
+		<put-attribute name="body" value="/WEB-INF/page/index.jsp" />
 	</definition>
 	
 	<definition name="visit" extends="baselayout">
-		<put-attribute name="body" value="/page/visit.jsp" />
+		<put-attribute name="body" value="/WEB-INF/page/visit.jsp" />
 	</definition>
 	
 </tiles-definitions> 

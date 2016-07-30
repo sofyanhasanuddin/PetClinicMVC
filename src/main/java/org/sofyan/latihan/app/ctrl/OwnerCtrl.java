@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sofyan.latihan.app.bean.DataTableReturnBean;
 import org.sofyan.latihan.app.bean.OwnerSearchBean;
 import org.sofyan.latihan.app.ctrl.message.Message;
@@ -30,6 +32,8 @@ import com.google.common.collect.Lists;
 @Controller
 public class OwnerCtrl {
 	
+	public static Logger log = LoggerFactory.getLogger( OwnerCtrl.class );
+	
 	@Autowired
 	private OwnerService ownerServiceImpl;
 	
@@ -39,6 +43,8 @@ public class OwnerCtrl {
 					produces 	= MediaType.APPLICATION_JSON_VALUE )
 	@ResponseBody
 	public Owner getOwner(@PathVariable("id") Long ownerId) {
+		
+		log.debug("Get owner with id : {}", ownerId);
 	
 		if( ownerId == null )
 			return null;

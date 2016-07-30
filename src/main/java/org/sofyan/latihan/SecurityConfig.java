@@ -17,7 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-				.antMatchers("/page/**")
+				.antMatchers("/resources/**")
+					.permitAll()
+				.antMatchers("/**")
 					.authenticated()
 			.and()
 				.formLogin()
@@ -29,16 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/page/index")
 				.permitAll()
 			.and()
-				.authorizeRequests()
-				.antMatchers("/resources/**")
-				.permitAll()
-			.and()
 				.logout()
 					.logoutUrl("/logout")
 					.logoutSuccessUrl("/login")
 			.and()
-				.csrf()
-				.disable();
+				.sessionManagement()
+				.maximumSessions(1);
 	}
 	
 	@Override

@@ -31,9 +31,11 @@ public class VisitSpecification {
 				VisitSearchBean vs = (VisitSearchBean) sb;
 				
 				predicates.add( cb.equal( root.join("listVisitDetail").get("deleted"), false ));
+				
+				root.join("owner");
 
                 if ( !StringUtils.isEmpty( vs.getName() )) {
-                    predicates.add( cb.like( cb.lower( root.join("owner").get("name") ), vs.getName() + "%"));
+                    predicates.add( cb.like( cb.lower( root.get("owner").get("name") ), vs.getName() + "%"));
                 }
                 
                 if( vs.getEntryDate() != null && vs.getLeaveDate() != null ) {
