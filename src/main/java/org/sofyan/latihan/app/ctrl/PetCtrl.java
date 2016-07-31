@@ -54,7 +54,7 @@ public class PetCtrl {
 	@ResponseBody
 	public List<PetType> getPetType() {
 
-		return (List<PetType>) this.petTypeServiceImpl.findAll();
+		return (List<PetType>) this.petTypeServiceImpl.findAllCacheAble();
 	
 	}
 	
@@ -65,7 +65,7 @@ public class PetCtrl {
 	@ResponseBody
 	public List<TreatmentType> getTreatment() {
 
-		return (List<TreatmentType>) this.treatmentTypeServiceImpl.findAll();
+		return (List<TreatmentType>) this.treatmentTypeServiceImpl.findAllCacheAble();
 
 	}
 

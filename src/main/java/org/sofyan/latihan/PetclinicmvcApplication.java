@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -17,6 +18,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 @SpringBootApplication
 @Import({SecurityConfig.class,WebConfig.class})
 @EnableAutoConfiguration
+@EnableCaching
 public class PetclinicmvcApplication {
 
 	public static void main(String[] args) {

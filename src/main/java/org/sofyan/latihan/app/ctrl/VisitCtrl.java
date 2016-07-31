@@ -163,8 +163,7 @@ public class VisitCtrl {
 			return null;
 		}
 		
-		Order[] order = new Order[ osb.getOrder().size() ];
-		int index = 0;
+		List<Order> listOrder = Lists.newArrayList();
 		
 		for(HashMap<String, String> map : osb.getOrder()) {
 			
@@ -178,10 +177,10 @@ public class VisitCtrl {
 				default : prop = "createdDate";
 			}
 			
-			order[index++] = new Order(dir, prop);
+			listOrder.add( new Order(dir, prop) );
 		}
 		
-		return order;
+		return listOrder.toArray(new Order[]{});
 		
 	}
 	
