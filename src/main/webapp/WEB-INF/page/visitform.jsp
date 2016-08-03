@@ -120,14 +120,17 @@
 							<td><t:label value="Treatment Type" mandatory="true"/></td>
 							<td>
 								<div class="form-group">
-									<t:select label="name" 
-											name="treatmentType.id" 
+									<div id="chkCon" style="margin-left: 40px;margin-bottom: 10px;">
+										<t:checkbox containerId="chkCon" 
+											label="name" 
+											name="listTreatmentType.treatmentType.id" 
+											urlRemoteData="pet/listTreatment" 
 											value="id" 
-											id="txtTreatmentType" 
-											urlRemoteData="pet/listTreatment"
-											required="required"
-											multiple="multiple" />
-								</div>							
+											inline="" 
+											idPrefix="chk"
+											required="required" />									
+									</div>
+								</div>					
 							</td>
 						</tr>
 						<tr>
@@ -225,11 +228,11 @@
 		$.each( vDetailObj.listTreatmentType, function(e) {
 			var dataSelectedTreatment = $(this)[0];
 			
-			$( "#txtTreatmentType option" ).each(function(e) {
+			$( "#treatmentForm input[type=checkbox]" ).each(function(e) {
 				var dataMasterTreatment = JSON.parse( $(this).attr("data") );
 				
 				if( dataMasterTreatment.id == dataSelectedTreatment.treatmentType.id ) {
-					$(this).prop('selected','selected');
+					$(this).prop('checked',true);
 				}
 				
 			});
@@ -255,7 +258,8 @@
 		});
 	}
 	
-	$("#txtVisitEntryDate, #txtVisitLeaveDate,#txtSearchVisitEntryDate, #txtSearchVisitLeaveDate").datepicker({
+	$("#txtVisitEntryDate, #txtVisitLeaveDate, #txtSearchVisitEntryDate, #txtSearchVisitLeaveDate")
+		.datepicker( {
 		"format" : "dd/mm/yyyy"
 	});
 
@@ -330,8 +334,8 @@
  	 			var pet = JSON.parse( $( "#txtOwnerPetName option:selected" ).attr("data") );
  	 			var vDetailTreatmentType = new Array();
  	 			
- 	 			$( "#txtTreatmentType option:selected" ).each(function(e) {
- 	 				vDetailTreatmentType.push( {"treatmentType" : JSON.parse( $(this).attr("data") ) } );
+ 	 			$('#treatmentForm input[type=checkbox]:checked').each(function () {
+ 	 			 	vDetailTreatmentType.push( {"treatmentType" : JSON.parse( $(this).attr("data") ) } );
  	 			});
  	 			
  	 			var visitDetail =  {
@@ -356,7 +360,7 @@
  			
  			if ($('#visitForm').smkValidate()) {
  				
- 				if( ! visitDtlDg.data().count() ) {
+ 				if( visitDtlDg.page.info().recordsDisplay === 0 ) {
  					alert("Please add PET");
  					return;	
  				}

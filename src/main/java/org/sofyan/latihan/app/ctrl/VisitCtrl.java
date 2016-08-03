@@ -71,13 +71,13 @@ public class VisitCtrl {
 					 produces 	= MediaType.APPLICATION_JSON_VALUE )
 	@ResponseBody
 	public Message save(@RequestBody Visit visit) {
-		
-		this.visitServiceImpl.save( visit );
-		
+
 		String msg;
 		if( visit.getId() == null || visit.getId().equals( 0L )) msg = "Successfully save visit";
 		else msg = "Successfully edit visit";
-				
+		
+		this.visitServiceImpl.save( visit );
+		
 		return Message.successMessage( msg );
 		
 	}
@@ -101,9 +101,7 @@ public class VisitCtrl {
 	@ResponseBody
 	public DataTableReturnBean visitDataTable(@ModelAttribute VisitSearchBean vsb) {
 		
-		int start = ( ( vsb.getStart() / vsb.getLength() ) + 1 ) - 1;
-		
-		PageRequest pr = buildPageRequest( start, vsb.getLength(), createOrder(vsb) );
+		PageRequest pr = buildPageRequest( vsb.getStartPaging(), vsb.getLength(), createOrder(vsb) );
 		
 		Page<Visit> pageVisit = this.visitServiceImpl.readAll( VisitSpecification.findByCriteria(vsb), pr );
 		
@@ -113,7 +111,7 @@ public class VisitCtrl {
 				.map( v->v.getId() )
 				.collect( Collectors.toList() );
 
-		//Get one to many value
+		//Get one to many value for visit detail
 		if( !CollectionUtils.isEmpty( listIds ) ) {
 			Map<Long, List<VisitDetail>> mapVisit = this.visitDetailServiceImpl.findAllByVisitIdIn( listIds )
 										.stream()

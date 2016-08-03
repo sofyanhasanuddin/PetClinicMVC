@@ -218,6 +218,8 @@
 	var editModePet,rowNumPet;
 	
 	function editOwner( id ) {
+		
+		$('#ownerForm').smkClear();
 			
 		$("#ownerModal").modal('show');
 		
@@ -291,7 +293,7 @@
  	        "serverSide": true,
  	       	"aaSorting": [],
  	       	"language": {
-  	          "emptyTable": "No owners available"
+  	        	"emptyTable": "No owners available"
   	        },
 	 	    "ajax" : {
 	        	"url": "owner/datatables",
@@ -365,7 +367,8 @@
  	       	"searching": true,
  	       	"sDom": '<"top"i>rt<"clear">',
  	       	"language": {
- 	          "emptyTable": "Owner does not have any pets"
+ 	        	"emptyTable": "Owner does not have any pets",
+ 	        	"zeroRecords" : "Owner does not have any pets"
  	        },
 	 	    "columns": [
 				{ "data": "id" },
@@ -448,10 +451,10 @@
  			
  			if ($('#ownerForm').smkValidate()) {
  				
- 				if( ! petDg.data().count() ) {
+ 				if( petDg.page.info().recordsDisplay === 0 ) {
  					alert("Please add PET");
  					return;	
- 				}
+ 				} 
  				
  				var owner = {
  		 				"id" 			: $("#ownerId").val(),

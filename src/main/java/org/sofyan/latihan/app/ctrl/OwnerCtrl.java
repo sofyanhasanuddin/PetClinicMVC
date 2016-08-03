@@ -59,13 +59,13 @@ public class OwnerCtrl {
 					 produces 	= MediaType.APPLICATION_JSON_VALUE )
 	@ResponseBody
 	public Message save(@RequestBody Owner owner) {
+
+		String msg;
+		if( owner.getId() == null || owner.getId().equals( 0L )) msg = "Successfully save owner";
+		else msg = "Successfully edit owner";
 		
 		this.ownerServiceImpl.save( owner );
 		
-		String msg;
-		if( owner.getId() == null || owner.getId().equals( 0 )) msg = "Successfully save owner";
-		else msg = "Successfully edit owner";
-				
 		return Message.successMessage( msg );
 		
 	}
@@ -89,9 +89,7 @@ public class OwnerCtrl {
 	@ResponseBody
 	public DataTableReturnBean ownerDataTable(@ModelAttribute OwnerSearchBean osb) {
 		
-		int start = ( ( osb.getStart() / osb.getLength() ) + 1 ) - 1;
-		
-		PageRequest pr = buildPageRequest( start, osb.getLength(), createOrder(osb) );
+		PageRequest pr = buildPageRequest( osb.getStartPaging(), osb.getLength(), createOrder(osb) );
 		
 		Page<Owner> pageOwner = this.ownerServiceImpl.findAll( CustomerSpecification.findByCriteria(osb), pr );
 		
@@ -127,7 +125,6 @@ public class OwnerCtrl {
 		}
 		
 		return listOrder.toArray(new Order[]{});
-		
 		
 	}
 	

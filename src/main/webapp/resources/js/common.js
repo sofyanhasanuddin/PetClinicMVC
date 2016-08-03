@@ -92,8 +92,6 @@ function resetForm( form ) {
 
 function clearForm( form ) {
 	
-	//$("#" + form)[0].reset();
-	
 	$('#' + form ).find(':input').each( function() {
 		
 		switch( this.type ) {
@@ -108,13 +106,11 @@ function clearForm( form ) {
 				//console.log("(CLEAR FORM) Found radio, skip it....");
 				break;
 			case "hidden"	:
-				//console.log("(CLEAR FORM) Found hidden, set to empty....");
 				this.value = "";
 				break;
 			default : 
 				var tagName = this.tagName.toLowerCase();
 				if( "select" == tagName ) this.selectedIndex = 0;
-				else if("textarea" == tagName ) this.value = "";
 				else {
 					this.value = "";
 				}
@@ -165,6 +161,35 @@ function buildComboLocalData(data, value, label, id, showSelect) {
 	
 }
 
+function buildCheckboxData(url, value, label, idPrefix, name, required, inline, containerId) {
+	getDataFunctionParam( url, function( data ) {
+
+		var classN = inline ? "checkbox-inline" : "checkbox";
+		
+		$.each(data,function() {
+			
+			var lbl = $('<label>')
+						.attr("class", classN )
+						.text(this[label]);
+			
+			var chk = $('<input>')
+				.attr("type","checkbox")
+				.val(this[value])
+				.attr("id",idPrefix+this[label])
+				.attr("name",name)
+				.attr("data",JSON.stringify(this));
+			
+			if( required)
+				chk.attr(required,'');
+			
+			lbl.prepend( chk );
+			$("#"+containerId).append( lbl );
+			
+		});
+			
+	});
+}
+
 /**
  * Populate a data. 
  * Usually use when viewing data to edit
@@ -172,7 +197,6 @@ function buildComboLocalData(data, value, label, id, showSelect) {
 function populateFormData( form, data ) {
 	
 	$('#' + form ).find(':input').each( function() {
-		
 		switch( this.type ) {
 			case "button" :
 			case "submit" :
@@ -196,23 +220,9 @@ function populateFormData( form, data ) {
 				break;
 			default : 
 				if( this.id ) {
-					
 					var value = getJsonValue( data, this.name );
-					
-					if( value == "undefined")
-						return;
-					
+					if( value == "undefined") return;
 					$(this).val( value );
-					
-//					var tagName = this.tagName.toLowerCase();
-//					if( "select" == tagName )
-//						$(this).val( getJsonValue( data, this.name ) );
-//					else if( "textarea" == tagName ) 
-//						this.value = getJsonValue( data, this.name );
-//					else {
-//						this.value = getJsonValue( data, this.name );
-//					}
-					
 				}
 				break;
 		}
@@ -228,19 +238,16 @@ function populateFormData( form, data ) {
 function getJsonValue( obj, path ) {
 	
 	try {
-		if( path == null || path == "" ) {
-			//console.log( "path empty" );
-			return "";
-		}
+		
+		if( path == null || path == "" ) return "";
 			
 		if( path.indexOf(".") != -1 ) {
-			//console.log("found . for " + path)
 			return eval("obj."+path);
 		} else {
 			return obj[path];
 		}
+		
 	}catch(e) {
-		//console.log(e);
 		return "";
 	}
 		

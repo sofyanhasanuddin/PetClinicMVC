@@ -10,6 +10,8 @@ public class DataTableRequestBean {
     private List<HashMap<String, String>> order;
     private int start;
     private int length;
+    
+    private int startPaging;
 
     public int getDraw() {
         return draw;
@@ -41,5 +43,11 @@ public class DataTableRequestBean {
     public void setLength(int length) {
         this.length = length;
     }
+	/**
+	 * @return the startPaging
+	 */
+	public int getStartPaging() {
+		return (( getStart() / getLength() ) + 1 ) - 1;
+	}
 
 }
