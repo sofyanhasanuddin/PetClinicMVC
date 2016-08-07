@@ -127,7 +127,7 @@
 					         <tr>
 					         	<th style="text-align:center;">Id</th>
 					         	<th style="text-align:center;">Deleted</th>
-					            <th style="text-align:center;">Name</th>
+					            <th style="text-align:center;" >Name</th>
 					            <th style="text-align:center;">Type</th>
 					            <th style="text-align:center;">Date of Birth</th>
 					            <th style="text-align:center;">Action</th>
@@ -364,6 +364,7 @@
  			"paging":   false,
  	        "ordering": false,
  	        "info":     false,
+ 	        "autoWidth" : false,
  	       	"searching": true,
  	       	"sDom": '<"top"i>rt<"clear">',
  	       	"language": {

@@ -269,6 +269,7 @@
  			"paging":   false,
  	        "ordering": false,
  	        "info":     false,
+ 	       	"autoWidth" : false,
  	       	"searching": true,
  	       	"sDom": '<"top"i>rt<"clear">',
  	       	"language": {
@@ -281,11 +282,9 @@
 	            { "data": "pet.type.name" },
 	            { "data": "pet.birthDate" }
         	],
-        	"fixedColumns": true,
   	       	"columnDefs": [
                  {
                 	 "targets": 5,
-                	 "width"  : 300,
                      "render": function ( data, type, row, meta ) {
                     	 
                     	 var btnEdit = '<button type="button" visitDtlDgEdit data="' + meta.row + '" class="btn btn-primary">' +
