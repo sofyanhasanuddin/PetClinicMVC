@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-08-06T20:40:47 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Visit" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fddadc4-91eb-45d1-90c2-1494dcf1afd9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="661745d1-21ef-4e63-9835-1e871fb484c0">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="pet" class="org.sofyan.latihan.app.model.Pet">
+			<fieldDescription><![CDATA[pet]]></fieldDescription>
+		</field>
+		<field name="treatmentTypeInStringJoin" class="java.lang.String">
+			<fieldDescription><![CDATA[treatmentTypeInStringJoin]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="owner" class="org.sofyan.latihan.app.model.Owner">
+		<fieldDescription><![CDATA[owner]]></fieldDescription>
+	</field>
+	<field name="note" class="java.lang.String">
+		<fieldDescription><![CDATA[note]]></fieldDescription>
+	</field>
+	<field name="createdDate" class="java.util.Date">
+		<fieldDescription><![CDATA[createdDate]]></fieldDescription>
+	</field>
+	<field name="entryDate" class="java.util.Date">
+		<fieldDescription><![CDATA[entryDate]]></fieldDescription>
+	</field>
+	<field name="leaveDate" class="java.util.Date">
+		<fieldDescription><![CDATA[leaveDate]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="updatedDate" class="java.util.Date">
+		<fieldDescription><![CDATA[updatedDate]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="version" class="java.lang.Integer">
+		<fieldDescription><![CDATA[version]]></fieldDescription>
+	</field>
+	<field name="listVisitDetail" class="java.util.List">
+		<fieldDescription><![CDATA[listVisitDetail]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="20" width="200" height="50" uuid="27cda849-ec9d-4b88-a170-3b69d95e1c51">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[List of Visits]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="134" splitType="Stretch">
+			<textField>
+				<reportElement x="111" y="10" width="160" height="20" uuid="d5cf086f-0c94-4763-bca7-a9a2a655187f"/>
+				<textFieldExpression><![CDATA[$F{owner}.getName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="90" height="20" uuid="a1416b38-2fba-4909-a087-233141bc8d3f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="30" width="160" height="20" uuid="75e4fcd1-6130-4682-a25f-8372afa69bef"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{entryDate})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="30" width="70" height="20" uuid="0176871b-f10d-4909-9cd4-7c9b6353be39"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entry Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="111" y="50" width="160" height="13" uuid="c5486fdb-e04d-4cf3-802b-f8d92dbce200"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{leaveDate})
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="50" width="70" height="13" uuid="baabadb1-9b66-4c88-a2a8-fa9a22d2fbaf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leave Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="80" height="13" uuid="c08f7815-93aa-4b5c-a6b9-a322907e8d00"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pet Treatment]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="110" y="70" width="380" height="60" uuid="c0335b84-26fa-4d80-bc2d-126d4ba93ad4">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="1e3d659a-f9ee-4775-9611-958b23d38004">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listVisitDetail})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="30" uuid="96f25481-ee32-4c4f-aa64-20081aadd22a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="fb4cdf89-2df3-4eec-ae74-f1d8a717c365"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[No.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="8a5a7784-5538-40d4-acf6-dd1c11297806"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<paragraph leftIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT} + "."]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="120" uuid="942cba06-2736-4f2e-a540-970246ac956d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="c4ebe041-9dbe-4427-b2e5-63e7ec82b155"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Pet Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="30" uuid="8baca64e-c301-4642-b116-df35f40b2a65"/>
+								<textElement verticalAlignment="Middle">
+									<paragraph leftIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{pet}.getName()]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="200" uuid="aacf0c2d-465d-4913-aa27-daf96356f2d2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="200" height="30" uuid="390b1f86-b10a-4b30-9eaa-6de8404e595c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Treatment Type]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="200" height="30" uuid="50cb2004-d092-46ae-8075-e7f71157e9bf"/>
+								<textElement verticalAlignment="Middle">
+									<paragraph leftIndent="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{treatmentTypeInStringJoin}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="100" y="10" width="10" height="20" uuid="e4e3ac52-b67d-4056-9830-73f060f57b7b"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="30" width="10" height="20" uuid="2a4a00e9-e9cd-4900-8b25-110055966530"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="50" width="10" height="20" uuid="13d21353-1a05-4e91-95e1-83751c51b09d"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="70" width="10" height="20" uuid="2cd3e104-fc56-42e8-ad53-306d94ec1624"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

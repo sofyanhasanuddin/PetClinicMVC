@@ -27,4 +27,8 @@
 		<put-attribute name="body" value="/WEB-INF/page/visit.jsp" />
 	</definition>
 	
+	<definition name="reports" extends="baselayout">
+		<put-attribute name="body" value="/WEB-INF/page/reports.jsp" />
+	</definition>
+	
 </tiles-definitions> 

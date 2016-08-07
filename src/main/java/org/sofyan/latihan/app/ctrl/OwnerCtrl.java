@@ -3,6 +3,8 @@ package org.sofyan.latihan.app.ctrl;
 import java.util.HashMap;
 import java.util.List;
 
+import net.sf.jasperreports.engine.JREmptyDataSource;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
 
@@ -99,6 +102,21 @@ public class OwnerCtrl {
 				pageOwner.getContent());
 		
 	}
+	
+	@RequestMapping(value = "/page/owner/report", 
+					method = RequestMethod.GET)
+	public ModelAndView getPdf() {
+	    
+		ModelAndView modelAndView = new ModelAndView("ownerReport");
+
+		modelAndView.addObject("format", "pdf" );
+		modelAndView.addObject("datasource", new JREmptyDataSource() );
+		modelAndView.addObject("OWNER_DS", this.ownerServiceImpl.findAll() );
+	    
+	    return modelAndView;
+	    
+	}
+	
 	
 	private Order[] createOrder(OwnerSearchBean osb) {
 		

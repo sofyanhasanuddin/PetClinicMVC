@@ -39,7 +39,10 @@
                     <a href="index"><i class="fa fa-users fa-fw"></i> Manage Owner(s)</a>
                 </li>
                 <li>
-                    <a href="visit"><i class="fa fa-database fa-fw"></i> Manage Visit(s)</a>
+                    <a href="visit"><i class="fa fa-home fa-fw"></i> Manage Visit(s)</a>
+                </li>
+                <li>
+                    <a href="reports"><i class="fa fa-file-o fa-fw"></i> Reports</a>
                 </li>
             </ul>
         </div>

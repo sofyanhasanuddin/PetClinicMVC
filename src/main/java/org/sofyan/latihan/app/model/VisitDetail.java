@@ -1,6 +1,7 @@
 package org.sofyan.latihan.app.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.apache.commons.collections.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -39,6 +43,9 @@ public class VisitDetail extends BaseEntity {
 	
 	@Column
 	private Boolean deleted;
+	
+	@Transient
+	private String treatmentTypeInStringJoin;
 
 	public Pet getPet() {
 		return pet;
@@ -79,6 +86,16 @@ public class VisitDetail extends BaseEntity {
 	public void setListTreatmentType(
 			List<VisitDetailTreatmentType> listTreatmentType) {
 		this.listTreatmentType = listTreatmentType;
+	}
+	
+	public String getTreatmentTypeInStringJoin() {
+		
+		if( CollectionUtils.isNotEmpty( this.listTreatmentType) ) {
+			return this.listTreatmentType.stream().map(e -> e.getTreatmentType().getName()).collect(Collectors.joining(", "));
+		}else {
+			return "";
+		}
+		
 	}
 	
 }

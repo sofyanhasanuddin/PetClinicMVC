@@ -87,7 +87,7 @@
 		      		Cancel
 		      	</button>
 		    	<button type="button" class="btn btn-primary" id="btnSaveVisit" >
-		        		<i class="fa fa-save"></i> Save
+		        	<i class="fa fa-save"></i> Save
 		        </button>
 		      </div>
 	    </div>
@@ -281,9 +281,11 @@
 	            { "data": "pet.type.name" },
 	            { "data": "pet.birthDate" }
         	],
+        	"fixedColumns": true,
   	       	"columnDefs": [
                  {
                 	 "targets": 5,
+                	 "width"  : 300,
                      "render": function ( data, type, row, meta ) {
                     	 
                     	 var btnEdit = '<button type="button" visitDtlDgEdit data="' + meta.row + '" class="btn btn-primary">' +

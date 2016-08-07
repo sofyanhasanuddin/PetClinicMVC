@@ -15,7 +15,7 @@
         <tiles:insertAttribute name="javascript" />
     </head>
     <body>
-    	<form action="<%=request.getContextPath()%>/logout" name="logout" method="post">
+    	<form style="display: none;"  action="<%=request.getContextPath()%>/logout" name="logout" method="post">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
     	<div id="wrapper">

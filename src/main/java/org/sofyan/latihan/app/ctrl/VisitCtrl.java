@@ -3,11 +3,14 @@ package org.sofyan.latihan.app.ctrl;
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -37,6 +40,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
 
@@ -153,6 +157,38 @@ public class VisitCtrl {
 		
 		return lvd;
 	
+	}
+	
+	@RequestMapping(value = "/page/visit/report", 
+					method = RequestMethod.GET)
+	public ModelAndView getPdf() {
+		
+		PageRequest pr = buildPageRequest( 0, 100, null );
+		Page<Visit> pageVisit = this.visitServiceImpl.readAll( null, pr );
+		
+		List<Long> listIds = pageVisit.getContent()
+				.stream()
+				.filter( v->v.getId() != null && !v.getId().equals( 0L ) )
+				.map( v->v.getId() )
+				.collect( Collectors.toList() );
+
+		//Get one to many value for visit detail
+		if( !CollectionUtils.isEmpty( listIds ) ) {
+			Map<Long, List<VisitDetail>> mapVisit = this.visitDetailServiceImpl.findAllByVisitIdIn( listIds )
+										.stream()
+										.collect( Collectors.groupingBy( vd -> vd.getVisit().getId() ) );
+		
+			pageVisit.getContent()
+				.forEach( vd -> vd.setListVisitDetail( mapVisit.get( vd.getId() )) );
+		}
+		
+		ModelAndView modelAndView = new ModelAndView("visitReport");
+		
+		modelAndView.addObject("format", "pdf" );
+	    modelAndView.addObject("datasource", new JRBeanCollectionDataSource( (Collection<?>) pageVisit.getContent() ));
+	    
+	    return modelAndView;
+	    
 	}
 	
 	private Order[] createOrder(VisitSearchBean osb) {
