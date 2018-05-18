@@ -6,7 +6,7 @@
 	<groupId>org.sofyan.latihan</groupId>
 	<artifactId>petclinicmvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>petclinicmvc</name>
 	<description>Demo project for Spring Boot</description>
