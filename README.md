@@ -5,13 +5,16 @@ Technologies used
 -------------
 1. Spring Boot, MVC, Security, Core, Transaction, DataJPA
 2. Hibernate-JPA
-3. Maven
-4. Bootstrap ( SbAdmin2, datatables )
+3. Tiles, JSP
+4. Maven
+5. Bootstrap ( SbAdmin2, datatables )
 
 Online Demo
 -
-You can access online this apps on openshift with url http://petclinicmvc-sh2210.rhcloud.com/petclinic/login
+You can access online this apps on openshift with url http://pet-clinic-mvc-app-pet-clinic-mvc.193b.starter-ca-central-1.openshiftapps.com/petclinic/login
 user pass ( sofyan, qwerty )
+
+*reports are not working for this online demo, i dont know why
 
 How to Run on Your Local
 ---
