@@ -16,7 +16,7 @@
 	</definition>
 	
 	<definition name="login" extends="loginLayout">
-		<put-attribute name="body" value="/login.jsp" />
+		<put-attribute name="body" value="/WEB-INF/page/login.jsp" />
 	</definition>
 	
 	<definition name="index" extends="baselayout">
