@@ -11,7 +11,7 @@ Technologies used
 
 Online Demo
 -
-You can access online this apps on openshift with url http://pet-clinic-mvc-app-pet-clinic-mvc.193b.starter-ca-central-1.openshiftapps.com/petclinic/login
+You can access online this apps on openshift with url http://web-pet-clinic.herokuapp.com/petclinic/login
 user pass ( sofyan, qwerty )
 
 *reports are not working for this online demo, i dont know why
